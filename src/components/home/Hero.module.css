@@ -1,0 +1,608 @@
+/* ─────────────────────────────────────────────
+   HERO — Sky Finishers Ventures
+   Premium split-layout: text left, visual right
+───────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--color-white);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Geometric accent stripes (brand-colored, very subtle) ── */
+.accentStripe1 {
+  position: absolute;
+  top: -60px;
+  right: 44%;
+  width: 3px;
+  height: 220px;
+  background: var(--color-primary);
+  opacity: 0.18;
+  transform: rotate(12deg);
+  z-index: 1;
+}
+
+.accentStripe2 {
+  position: absolute;
+  top: -40px;
+  right: calc(44% + 12px);
+  width: 3px;
+  height: 160px;
+  background: var(--color-secondary);
+  opacity: 0.14;
+  transform: rotate(12deg);
+  z-index: 1;
+}
+
+/* ── Main two-column inner layout ── */
+.heroInner {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 0;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+/* ══════════════════════════════════════════
+   LEFT: TEXT COLUMN
+══════════════════════════════════════════ */
+.textColumn {
+  padding: 120px var(--spacing-12) 80px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+
+  /* Initial state — offscreen left */
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hero.heroReady .textColumn {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Logo lockup in hero text column ── */
+.logoLockup {
+  margin-bottom: var(--spacing-6);
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: logoFadeIn 0.6s ease 0.1s forwards;
+}
+
+@keyframes logoFadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.heroLogo {
+  width: auto;
+  height: 62px;
+  object-fit: contain;
+  /* Slightly enhance the logo against white bg */
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08));
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--color-slate-light);
+  margin-bottom: var(--spacing-6);
+}
+
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.headline {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 4.5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--color-slate-dark);
+  margin-bottom: var(--spacing-6);
+  letter-spacing: -0.02em;
+}
+
+.headlineHighlight {
+  color: var(--color-primary);
+  position: relative;
+}
+
+.headlineAccent {
+  color: var(--color-secondary);
+}
+
+.subheadline {
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-8);
+  max-width: 500px;
+}
+
+/* ── CTA Row ── */
+.ctaRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-6);
+  margin-bottom: var(--spacing-10);
+}
+
+.primaryCta {
+  display: inline-block;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 16px 36px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.primaryCta:hover {
+  background-color: var(--color-primary-hover);
+  color: var(--color-white);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(227, 29, 97, 0.3);
+}
+
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-slate-dark);
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.secondaryCta:hover {
+  color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+.ctaArrow {
+  transition: transform var(--transition-fast);
+}
+
+.secondaryCta:hover .ctaArrow {
+  transform: translateX(5px);
+}
+
+/* ── Trust strip ── */
+.trustStrip {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding-top: var(--spacing-6);
+  border-top: 1px solid var(--color-gray-medium);
+  width: 100%;
+}
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-slate);
+}
+
+.trustDot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════
+   RIGHT: VISUAL COLUMN
+══════════════════════════════════════════ */
+.visualColumn {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  background-color: var(--color-gray-light);
+  overflow: hidden;
+
+  /* Initial state — fade in from right slightly */
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.9s ease 0.2s, transform 0.9s ease 0.2s;
+}
+
+.hero.heroReady .visualColumn {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Brand glow orbs */
+.orb1, .orb2, .orb3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.orb1 {
+  width: 350px;
+  height: 350px;
+  background: var(--color-primary);
+  opacity: 0.07;
+  top: -80px;
+  right: -80px;
+  animation: orbFloat 8s ease-in-out infinite;
+}
+
+.orb2 {
+  width: 280px;
+  height: 280px;
+  background: var(--color-secondary);
+  opacity: 0.08;
+  bottom: 0;
+  left: -40px;
+  animation: orbFloat 10s ease-in-out infinite reverse;
+}
+
+.orb3 {
+  width: 200px;
+  height: 200px;
+  background: var(--color-accent);
+  opacity: 0.05;
+  top: calc(50% - 100px);
+  left: calc(50% - 100px);
+  animation: orbFloat3 12s ease-in-out infinite 2s;
+}
+
+@keyframes orbFloat3 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-15px, 20px); }
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(15px, -20px); }
+}
+
+/* Image container */
+.imageFrame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 2rem 0;
+  z-index: 2;
+}
+
+.imageWrap {
+  position: relative;
+  width: min(96%, 560px);
+  height: min(84vh, 680px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  animation: mascotFloat 6.5s ease-in-out infinite;
+}
+
+.imageReveal {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-gray-light);
+  z-index: 3;
+  transform-origin: right;
+  animation: imageRevealSlide 1.2s cubic-bezier(0.77, 0, 0.175, 1) 0.4s forwards;
+}
+
+@keyframes imageRevealSlide {
+  0% { transform: scaleX(1); }
+  100% { transform: scaleX(0); }
+}
+
+@keyframes mascotFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(-1.5deg);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0) rotate(1.5deg);
+  }
+}
+
+.heroImage {
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  filter: drop-shadow(0 18px 40px rgba(58, 74, 79, 0.12));
+}
+
+/* Vignette — gradient overlay for seamless blend on the left edge */
+.imageVignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.25) 0%,
+    transparent 35%
+  ),
+  linear-gradient(
+    to top,
+    rgba(58, 74, 79, 0.25) 0%,
+    transparent 40%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ── Floating badge ── */
+.floatingBadge {
+  position: absolute;
+  top: var(--spacing-12);
+  left: -30px;
+  z-index: 10;
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-3) var(--spacing-5);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+
+  /* Entrance animation */
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: badgeEntrance 0.6s ease 1.4s forwards;
+}
+
+@keyframes badgeEntrance {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.badgeNumber {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.badgeText {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-slate-light);
+  white-space: nowrap;
+}
+
+/* ── Floating tag (service label) ── */
+.floatingTag {
+  position: absolute;
+  bottom: var(--spacing-12);
+  right: var(--spacing-6);
+  z-index: 10;
+  background-color: var(--color-slate-dark);
+  color: var(--color-white);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-xl);
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+
+  opacity: 0;
+  animation: tagEntrance 0.6s ease 1.6s forwards;
+}
+
+@keyframes tagEntrance {
+  to { opacity: 1; }
+}
+
+.tagDot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-secondary);
+  animation: tagPulse 2s ease-in-out infinite;
+}
+
+@keyframes tagPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ── Scroll indicator ── */
+.scrollIndicator {
+  position: absolute;
+  bottom: var(--spacing-8);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+  z-index: 10;
+  opacity: 0;
+  animation: fadeInDelay 0.8s ease 2s forwards;
+}
+
+@keyframes fadeInDelay {
+  to { opacity: 1; }
+}
+
+.scrollLine {
+  display: block;
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, var(--color-primary), transparent);
+  animation: scrollAnim 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollAnim {
+  0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
+  50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
+}
+
+.scrollLabel {
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-slate-light);
+}
+
+/* ══════════════════════════════════════════
+   REDUCED MOTION SUPPORT
+══════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .imageReveal,
+  .imageWrap,
+  .heroImage,
+  .orb1, .orb2, .orb3,
+  .floatingBadge, .floatingTag,
+  .scrollIndicator, .scrollLine,
+  .tagDot, .logoLockup { animation: none; }
+
+  .floatingBadge, .floatingTag, .scrollIndicator, .logoLockup { opacity: 1; }
+  .logoLockup { transform: none; }
+  .textColumn, .visualColumn { opacity: 1; transform: none; transition: none; }
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .headline {
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+  }
+  
+  .textColumn {
+    padding-right: var(--spacing-8);
+  }
+}
+
+@media (max-width: 900px) {
+  .heroInner {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .textColumn {
+    padding: 100px 0 var(--spacing-8) 0;
+    order: 1;
+    opacity: 1;
+    transform: none;
+    transition: none;
+    align-items: center;
+    text-align: center;
+  }
+
+  .visualColumn {
+    order: 2;
+    height: 420px;
+    min-height: 320px;
+    max-height: 500px;
+    width: 100%;
+    opacity: 1;
+    transform: none;
+    transition: none;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-12);
+  }
+
+  .imageFrame {
+    inset: auto;
+    position: relative;
+    width: min(100%, 440px);
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .imageWrap {
+    width: min(100%, 360px);
+    height: 100%;
+  }
+
+  .floatingBadge {
+    left: var(--spacing-4);
+    top: var(--spacing-4);
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .logoLockup {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .scrollIndicator {
+    display: none;
+  }
+  
+  .accentStripe1,
+  .accentStripe2 {
+    display: none;
+  }
+}
+
+@media (max-width: 580px) {
+  .ctaRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-4);
+  }
+
+  .primaryCta {
+    width: 100%;
+    text-align: center;
+  }
+
+  .trustStrip {
+    gap: var(--spacing-3);
+  }
+
+  .visualColumn {
+    height: 330px;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-8);
+  }
+
+  .imageWrap {
+    width: min(100%, 300px);
+  }
+
+  .textColumn {
+    padding-top: 80px;
+  }
+}

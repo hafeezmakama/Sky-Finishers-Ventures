@@ -1,0 +1,133 @@
+.projectsSection {
+  background-color: var(--color-white);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: var(--spacing-12);
+  gap: var(--spacing-6);
+}
+
+.headerText {
+  max-width: 600px;
+}
+
+.headline {
+  font-size: clamp(2rem, 3.5vw, 2.5rem);
+  margin-bottom: var(--spacing-4);
+  color: var(--color-slate-dark);
+}
+
+.supportingText {
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+}
+
+.viewAllBtn {
+  display: inline-block;
+  padding: var(--spacing-3) var(--spacing-6);
+  border: 2px solid var(--color-slate-dark);
+  color: var(--color-slate-dark);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.viewAllBtn:hover {
+  background-color: var(--color-slate-dark);
+  color: var(--color-white);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-6);
+}
+
+.projectCard {
+  display: block;
+  group: true;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+}
+
+.imageWrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-4);
+  background-color: var(--color-gray-medium);
+  min-height: 280px;
+}
+
+.projectImage {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.projectCard:hover .projectImage {
+  transform: scale(1.05);
+}
+
+.largeCard {
+  grid-column: span 2;
+}
+
+.largeCard .imageWrapper {
+  min-height: 520px;
+}
+
+.projectInfo {
+  padding: var(--spacing-2) 0;
+}
+
+.projectCategory {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-2);
+  letter-spacing: 1px;
+}
+
+.projectTitle {
+  font-size: 1.5rem;
+  color: var(--color-slate-dark);
+  margin-bottom: var(--spacing-2);
+  transition: color var(--transition-fast);
+}
+
+.projectCard:hover .projectTitle {
+  color: var(--color-primary);
+}
+
+.projectMeta {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+@media (max-width: 992px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+  
+  .largeCard {
+    grid-column: span 1;
+  }
+  
+  .imageWrapper,
+  .largeCard .imageWrapper {
+    min-height: 350px;
+  }
+}

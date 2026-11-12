@@ -1,0 +1,114 @@
+.processSection {
+  background-color: var(--color-gray-light);
+}
+
+.header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto var(--spacing-16);
+}
+
+.headline {
+  font-size: clamp(2rem, 3.5vw, 2.5rem);
+  margin-bottom: var(--spacing-4);
+  color: var(--color-slate-dark);
+}
+
+.supportingText {
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-8);
+  position: relative;
+}
+
+/* Connect the items with a line on desktop */
+@media (min-width: 993px) {
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--color-gray-medium);
+    z-index: 0;
+  }
+}
+
+.timelineItem {
+  position: relative;
+  z-index: 1;
+}
+
+.stepNumber {
+  width: 80px;
+  height: 80px;
+  background-color: var(--color-white);
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-6);
+  box-shadow: 0 0 0 10px var(--color-gray-light); /* To cover the line behind it */
+  transition: all var(--transition-normal);
+}
+
+.timelineItem:hover .stepNumber {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  transform: scale(1.1);
+}
+
+.stepTitle {
+  font-size: 1.25rem;
+  color: var(--color-slate-dark);
+  margin-bottom: var(--spacing-2);
+}
+
+.stepDesc {
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 992px) {
+  .timeline {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-12);
+  }
+  
+  .timelineItem {
+    display: flex;
+    gap: var(--spacing-4);
+    align-items: flex-start;
+  }
+  
+  .stepNumber {
+    width: 60px;
+    height: 60px;
+    font-size: 1.25rem;
+    margin-bottom: 0;
+    flex-shrink: 0;
+    box-shadow: none;
+  }
+  
+  .stepContent {
+    flex: 1;
+  }
+}

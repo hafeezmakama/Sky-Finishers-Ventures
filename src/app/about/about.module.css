@@ -1,0 +1,403 @@
+.hero {
+  background-color: var(--color-slate-dark);
+  color: var(--color-white);
+  padding: calc(var(--spacing-section) + 4rem) 0 var(--spacing-section);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  opacity: 0.1;
+  filter: blur(40px);
+}
+
+.heroTitle {
+  color: var(--color-white);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: var(--spacing-4);
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  color: var(--color-gray-medium);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section {
+  padding: var(--spacing-section) 0;
+}
+
+.bgLight {
+  background-color: var(--color-gray-light);
+}
+
+.sectionTag {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-4);
+  display: block;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: var(--spacing-8);
+  color: var(--color-slate-dark);
+}
+
+.sectionTitleCenter {
+  text-align: center;
+}
+
+/* Our Story */
+.storyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-12);
+  align-items: center;
+}
+
+.storyContent p {
+  font-size: 1.1rem;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-4);
+  line-height: 1.8;
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 14px;
+  width: 2px;
+  background-color: var(--color-gray-medium);
+}
+
+.timelineItem {
+  position: relative;
+  padding-left: var(--spacing-12);
+}
+
+.timelineMarker {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  border: 4px solid var(--color-white);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.timelineYear {
+  font-weight: 700;
+  color: var(--color-slate-dark);
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-2);
+  display: block;
+}
+
+.timelineContent {
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+/* Founder */
+.founderGrid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--spacing-12);
+  align-items: center;
+}
+
+.founderImagePlaceholder {
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, var(--color-slate-dark), var(--color-slate));
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  font-size: 4rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-lg);
+}
+
+.founderRole {
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-bottom: var(--spacing-4);
+  font-size: 1.1rem;
+}
+
+.founderBio {
+  margin-bottom: var(--spacing-6);
+}
+
+.founderBio p {
+  margin-bottom: var(--spacing-3);
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+.quote {
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--color-slate-dark);
+  border-left: 4px solid var(--color-secondary);
+  padding-left: var(--spacing-4);
+  margin-top: var(--spacing-6);
+  font-weight: 600;
+}
+
+/* Team */
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-8);
+}
+
+.teamCard {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-8);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.teamCard:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.teamPlaceholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--color-gray-light);
+  margin: 0 auto var(--spacing-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--color-slate-light);
+  font-weight: 700;
+  border: 2px solid var(--color-gray-medium);
+}
+
+.teamImage {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto var(--spacing-4);
+  border: 2px solid var(--color-gray-medium);
+}
+
+.teamName {
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-1);
+}
+
+.teamRole {
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Features (Different) */
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-6);
+}
+
+.featureCard {
+  background: var(--color-white);
+  padding: var(--spacing-6);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.featureCard h3 {
+  margin-bottom: 0;
+  font-size: 1.1rem;
+}
+
+/* Services */
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-4);
+}
+
+.serviceItem {
+  background: var(--color-white);
+  padding: var(--spacing-4) var(--spacing-6);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-gray-medium);
+  font-weight: 600;
+  color: var(--color-slate-dark);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+}
+
+.serviceItem::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-secondary);
+  margin-right: var(--spacing-3);
+}
+
+.serviceItem:hover {
+  border-color: var(--color-secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Vision/Mission */
+.visionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-8);
+}
+
+.visionCard {
+  background: var(--color-slate-dark);
+  color: var(--color-white);
+  padding: var(--spacing-10);
+  border-radius: var(--radius-lg);
+}
+
+.visionCard h3 {
+  color: var(--color-white);
+  margin-bottom: var(--spacing-4);
+  font-size: 1.5rem;
+}
+
+.visionCard p {
+  color: var(--color-gray-medium);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.visionCard.mission {
+  background: var(--color-primary);
+}
+
+.visionCard.mission h3, .visionCard.mission p {
+  color: var(--color-white);
+}
+
+/* Office */
+.officeContent {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.officeDetails {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-6);
+  font-size: 1.1rem;
+}
+
+/* CTA Section */
+.ctaSection {
+  background-color: var(--color-slate-dark);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  color: var(--color-white);
+  padding: calc(var(--spacing-section) * 1.5) 0;
+}
+
+.ctaHeadline {
+  color: var(--color-white);
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: var(--spacing-8);
+}
+
+.ctaActions {
+  display: flex;
+  gap: var(--spacing-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.primaryBtn {
+  display: inline-block;
+  padding: var(--spacing-3) var(--spacing-8);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: background-color var(--transition-fast);
+}
+
+.primaryBtn:hover {
+  background-color: var(--color-primary-hover);
+  color: var(--color-white);
+}
+
+.secondaryBtn {
+  display: inline-block;
+  padding: var(--spacing-3) var(--spacing-8);
+  background-color: transparent;
+  color: var(--color-white);
+  border: 2px solid var(--color-white);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.secondaryBtn:hover {
+  background-color: var(--color-white);
+  color: var(--color-slate-dark);
+}
+
+/* Responsive Overrides */
+@media (max-width: 992px) {
+  .storyGrid, .founderGrid, .visionGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-8);
+  }
+  .founderImagePlaceholder {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
