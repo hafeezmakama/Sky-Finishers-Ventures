@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     default: "Sky Finishers Ventures | Professional Interior & Exterior Finishing in Nigeria",
     template: "%s | Sky Finishers Ventures",
   },
+  verification: {
+  google: "p6s5i0LIwO5UZ71dB8NjedICjuBCZnMjRbYu175zFCM",
+},
   description:
     "Sky Finishers Ventures is a professional interior and exterior finishing company with 10+ years of experience delivering premium painting, POP, screeding, and decorative finishes across Nigeria.",
   openGraph: {
